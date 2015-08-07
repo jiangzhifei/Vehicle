@@ -18,14 +18,14 @@ public class MyMvcInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("Enter MyMvcInterceptor.preHandle,request=[{}]", request.getRequestURL());
+        logger.debug("Enter MyMvcInterceptor.preHandle,request=[{}]", request.getRequestURL());
 
         HttpSession session = request.getSession();
         if (null == session) {
             response.sendRedirect("/index.jsp");
             response.setStatus(HttpStatus.NOT_MODIFIED.value());
 
-            logger.info("Exit MyMvcInterceptor.preHandle");
+            logger.debug("Exit MyMvcInterceptor.preHandle");
             return false;
         }
         Object user = session.getAttribute("user");
@@ -33,11 +33,11 @@ public class MyMvcInterceptor implements HandlerInterceptor {
             response.sendRedirect("/index.jsp");
             response.setStatus(HttpStatus.NOT_MODIFIED.value());
 
-            logger.info("Exit MyMvcInterceptor.preHandle");
+            logger.debug("Exit MyMvcInterceptor.preHandle");
             return false;
         }
 
-        logger.info("Exit MyMvcInterceptor.preHandle");
+        logger.debug("Exit MyMvcInterceptor.preHandle");
         return true;
     }
 

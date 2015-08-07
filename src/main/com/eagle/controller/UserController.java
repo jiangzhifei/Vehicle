@@ -1,13 +1,11 @@
 package com.eagle.controller;
 
-import com.eagle.controller.dto.ResponseBase;
 import com.eagle.dal.dataObject.UserDO;
 import com.eagle.service.IUserService;
 import com.eagle.util.EncryptUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -56,6 +54,7 @@ public class UserController {
             res = "系统错误";
         }
 
+        logger.info("Exit login,res={}", res);
         return res;
     }
 }
