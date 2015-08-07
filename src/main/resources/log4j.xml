@@ -14,7 +14,7 @@
 
     <appender name="applogfile" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="encoding" value="UTF-8" />
-        <param name="File" value="/opt/logs/eagle/vehicle.log" />
+        <param name="File" value="/opt/eagle/log/vehicle.log" />
         <param name="DatePattern" value="'.'yyyy-MM-dd" />
         <param name="Append" value="true" />
         <layout class="org.apache.log4j.PatternLayout">
