@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.eagle.dal.dao.UserDao">
+
+	<resultMap id="user"
+		type="com.eagle.dal.dataObject.UserDO">
+		<id property="id" column="ID" />
+		<result property="userName" column="USER_NAME" />
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="isActive" column="IS_ACTIVE"/>
+		<result property="IsLocked" column="IS_LOCKED"/>
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="updateTime" column="UPDATE_TIME" />
+	</resultMap>
+
+	<sql id="columns">
+		ID,USER_NAME,USER_PWD,IS_ACTIVE,IS_LOCKED,CREATE_TIME,UPDATE_TIME
+	</sql>
+	<insert id="add" parameterType="com.eagle.dal.dataObject.UserDO">
+		INSERT INTO T_USERS
+		(ID,USER_NAME,USER_PWD,IS_ACTIVE,IS_LOCKED,CREATE_TIME,UPDATE_TIME)
+		VALUES
+		(#{id},#{userName},#{userPwd},#{isActive},#{IsLocked},current_timestamp,CURRENT_TIMESTAMP)
+	</insert>
+
+	<select id="getByName" parameterType="String" resultMap="user">
+		SELECT
+		<include refid="columns" />
+		  FROM T_USERS
+		WHERE USER_NAME=#{userName}
+	</select>
+</mapper>
+
