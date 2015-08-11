@@ -38,7 +38,7 @@ public class UserController {
                 String encryptedPwd = EncryptUtil.encryptSha256(pwd);
                 if (user.getUserPwd().equals(encryptedPwd)) {
                     if (0 == user.getIsActive()) {
-                        res = "用户为激活";
+                        res = "用户未激活";
                     } else if (1 == user.getIsLocked()) {
                         res = "用户被锁定";
                     } else {
@@ -46,7 +46,7 @@ public class UserController {
                         res = "0";
                     }
                 } else {
-                    res = new String(new String("密码错误").getBytes("utf-8"), "utf-8");
+                    res = "密码错误";
                 }
             }
         } catch (Exception e) {
